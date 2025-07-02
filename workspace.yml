@@ -4,7 +4,7 @@ imageRepos:
   - id: core
     url: nexus.citeck.ru
   - id: enterprise
-    url: enterprise-registry.citeck.ru
+    url: harbor.citeck.ru/enterprise
     authType: BASIC
 bundleRepos:
   - id: community
