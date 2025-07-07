@@ -1,5 +1,17 @@
 ---
 defaultBundleRef: 'community:LATEST'
+fastStartVariants:
+  - name: Fast Start With Demo Data
+    snapshot: demo-data
+    weight: 0.7
+  - name: Fast Start Without Data
+    weight: 0.3
+snapshots:
+  - id: demo-data
+    name: Demo Data
+    url: https://www.dropbox.com/scl/fi/gejslgukbcvw7lshojmar/demo-data.zip?rlkey=pslsq6esc48ql9uypesrrxt85&st=q814hpu9&dl=0
+    size: 16m
+    sha256: 3ee67ff298db3068f707b140e8dee86216fe49ac66743c1be39d22b07ad26a5c
 imageRepos:
   - id: core
     url: nexus.citeck.ru
@@ -17,11 +29,13 @@ bundleRepos:
     url: https://github.com/Citeck/launcher-workspace.git
     branch: main
     path: enterprise
+citeckProxy:
+  aliases: [ 'EcosProxyApp' ]
 defaultWebappProps:
   heapSize: "256m"
   memoryLimit: "1g"
 webapps:
-  - id: proxy
+  - id: proxy #todo: remove
     aliases: [ 'EcosProxyApp' ]
   - id: eproc
     aliases: [ 'EcosProcessApp' ]
