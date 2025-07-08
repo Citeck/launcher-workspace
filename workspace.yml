@@ -3,9 +3,7 @@ defaultBundleRef: 'community:LATEST'
 fastStartVariants:
   - name: Fast Start With Demo Data
     snapshot: community-demo-data
-    weight: 0.7
   - name: Fast Start Without Demo Data
-    weight: 0.3
 snapshots:
   - id: community-demo-data
     name: Demo Data
