@@ -11,7 +11,7 @@ snapshots:
     name: Demo Data
     url: https://dl.dropboxusercontent.com/scl/fi/33gqmlf47t0td9pwaio2k/community-demo-data.zip?rlkey=gxq1m8qmhk28jyg9te59ut1b8&st=4xfmuio0&dl=0
     size: 16m
-    sha256: 3ee67ff298db3068f707b140e8dee86216fe49ac66743c1be39d22b07ad26a5c
+    sha256: 09130c191fe512cdbcd8b187d2d96e668d3af4cc61a34aa397aac39c88d0d4e6
 imageRepos:
   - id: core
     url: nexus.citeck.ru
