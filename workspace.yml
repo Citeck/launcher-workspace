@@ -9,9 +9,9 @@ fastStartVariants:
 snapshots:
   - id: community-demo-data
     name: Demo Data
-    url: https://dl.dropboxusercontent.com/scl/fi/33gqmlf47t0td9pwaio2k/community-demo-data.zip?rlkey=gxq1m8qmhk28jyg9te59ut1b8&st=4xfmuio0&dl=0
-    size: 74.1m
-    sha256: 09130c191fe512cdbcd8b187d2d96e668d3af4cc61a34aa397aac39c88d0d4e6
+    url: https://dl.dropboxusercontent.com/scl/fi/qzrno81i1ccwktf3tazbw/community-demo-data.zip?rlkey=if6puieeqa98bf4d01yihbih5&st=jfp8copj&dl=0
+    size: 77.8m
+    sha256: 78173f97654a0ba64b39e8c5f2df9df9d77d157f8b7490c21e042ce6acf1d784
 imageRepos:
   - id: core
     url: nexus.citeck.ru
