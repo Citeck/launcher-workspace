@@ -10,7 +10,7 @@ snapshots:
   - id: community-demo-data
     name: Demo Data
     url: https://dl.dropboxusercontent.com/scl/fi/33gqmlf47t0td9pwaio2k/community-demo-data.zip?rlkey=gxq1m8qmhk28jyg9te59ut1b8&st=4xfmuio0&dl=0
-    size: 16m
+    size: 74.1m
     sha256: 09130c191fe512cdbcd8b187d2d96e668d3af4cc61a34aa397aac39c88d0d4e6
 imageRepos:
   - id: core
