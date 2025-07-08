@@ -101,7 +101,7 @@ webapps:
         ECOS_NOTIFICATIONS_EVENT_PASSWORD: "admin"
       dataSources:
         main:
-          url: "jdbc:postgresql://${PG_HOST}:${PG_PORT}/citeck_history"
+          url: "jdbc:postgresql://${PG_HOST}:${PG_PORT}/citeck_notifications"
   - id: integrations
     aliases: [ 'EcosIntegrationsApp' ]
     defaultProps:
