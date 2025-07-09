@@ -1,5 +1,4 @@
 ---
-defaultBundleRef: 'community:LATEST'
 fastStartVariants:
   - name: Fast Start With Demo Data
     snapshot: community-demo-data
@@ -10,6 +9,11 @@ snapshots:
     url: https://dl.dropboxusercontent.com/scl/fi/thsn4yr5uduqlt0esyc8h/community-demo-data.zip?rlkey=muctg7j5pg46qry7lajx2rtz4&st=mehgtivh&dl=0
     size: 73.5m
     sha256: d603584b119dd78edadd8c8840ef6b79a35d6b7635bb41c37832cd2491b01030
+defaultNsTemplate: default
+namespaceTemplates:
+  - id: default
+    config:
+      bundleRef: 'community:LATEST'
 imageRepos:
   - id: core
     url: nexus.citeck.ru
@@ -33,8 +37,6 @@ defaultWebappProps:
   heapSize: "256m"
   memoryLimit: "1g"
 webapps:
-  - id: proxy
-    aliases: [ 'EcosProxyApp' ]
   - id: eproc
     aliases: [ 'EcosProcessApp' ]
     defaultProps:
