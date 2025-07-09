@@ -9,9 +9,9 @@ snapshots:
     url: https://dl.dropboxusercontent.com/scl/fi/thsn4yr5uduqlt0esyc8h/community-demo-data.zip?rlkey=muctg7j5pg46qry7lajx2rtz4&st=mehgtivh&dl=0
     size: 73.5m
     sha256: d603584b119dd78edadd8c8840ef6b79a35d6b7635bb41c37832cd2491b01030
-defaultNsTemplate: default
 namespaceTemplates:
   - id: default
+    name: Default
     config:
       bundleRef: 'community:LATEST'
 imageRepos:
