@@ -14,6 +14,8 @@ namespaceTemplates:
     name: Default
     config:
       bundleRef: 'community:LATEST'
+      authentication:
+        type: KEYCLOAK
 imageRepos:
   - id: core
     url: nexus.citeck.ru
