@@ -6,9 +6,9 @@ fastStartVariants:
 snapshots:
   - id: community-demo-data
     name: Demo Data
-    url: https://dl.dropboxusercontent.com/scl/fi/r3lf0ohrtp70l9nplzyfa/community-demo-data.zip?rlkey=jc1aq7wjjv7l75ojohf8pg3k3&st=tfl5ookn&dl=0
-    size: 73m
-    sha256: 71bb4c2d697b7966b0ae90bf3fcd8a61857daf87d650d38feff4416d7d5e94ff
+    url: https://dl.dropboxusercontent.com/scl/fi/jsr8jw1ywy83vlv2yf3ku/community-demo-data.zip?rlkey=yoybermzcnnwcpmgac1680hl1&st=1f7iyoli&dl=0
+    size: 78m
+    sha256: 6ad57f643588a4e69c43c5f8cd75ef8d359881f1e09e5267740d3f6d91954a8a
 namespaceTemplates:
   - id: default
     name: Default
