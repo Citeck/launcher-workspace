@@ -6,9 +6,9 @@ fastStartVariants:
 snapshots:
   - id: community-demo-data
     name: Demo Data
-    url: https://dl.dropboxusercontent.com/scl/fi/soh3m85j6v8tfijgemhg8/community-demo-data.zip?rlkey=29xjj2k8dlkog1zt8cl5idll6&st=pl4nsadq&dl=0
-    size: 78m
-    sha256: 219e5ee7d5b28e5696ca166c630545a08178c8346cf76c3200b90e0d882ad1b3
+    url: https://dl.dropboxusercontent.com/scl/fi/0wma7x9undzwheydrf4lf/community-demo-data.zip?rlkey=3gq3nateiurc7w55zsmjcorg3&st=scmkhpqw&dl=0
+    size: 82.4m
+    sha256: 1fce893bb4b6dca8431076f71844e6d218899bb142a54a4c621e61f398ac43f6
 namespaceTemplates:
   - id: default
     name: Default
@@ -58,6 +58,10 @@ webapps:
     defaultProps:
       environments:
         ECOS_INTEGRATIONS_ONLYOFFICE_HOST: "${ONLY_OFFICE_HOST}"
+        ECOS_INTEGRATIONS_KEYCLOAKADMIN_ENABLED: "${KK_ENABLED}"
+        ECOS_INTEGRATIONS_KEYCLOAKADMIN_URL: "${KK_ADMIN_URL}"
+        ECOS_INTEGRATIONS_KEYCLOAKADMIN_USER: "${KK_ADMIN_USER}"
+        ECOS_INTEGRATIONS_KEYCLOAKADMIN_PASSWORD: "${KK_ADMIN_PASSWORD}"
       dataSources:
         main:
           url: "jdbc:postgresql://${PG_HOST}:${PG_PORT}/citeck_emodel"
