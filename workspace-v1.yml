@@ -57,7 +57,7 @@ webapps:
     aliases: [ 'EcosModelApp' ]
     defaultProps:
       environments:
-        ECOS_INTEGRATIONS_ONLYOFFICE_HOST: "${ONLY_OFFICE_HOST}"
+        ECOS_INTEGRATIONS_ONLYOFFICE_HOST: "${ONLYOFFICE_HOST}"
         ECOS_INTEGRATIONS_KEYCLOAKADMIN_ENABLED: "${KK_ENABLED}"
         ECOS_INTEGRATIONS_KEYCLOAKADMIN_URL: "${KK_ADMIN_URL}"
         ECOS_INTEGRATIONS_KEYCLOAKADMIN_USER: "${KK_ADMIN_USER}"
@@ -121,7 +121,7 @@ webapps:
     aliases: [ 'EcosTransformationsApp' ]
     defaultProps:
       environments:
-        ECOS_INTEGRATIONS_ONLYOFFICE_HOST: "${ONLY_OFFICE_HOST}"
+        ECOS_INTEGRATIONS_ONLYOFFICE_HOST: "${ONLYOFFICE_HOST}"
   - id: content
     aliases: [ 'EcosContentApp' ]
   - id: ecom
