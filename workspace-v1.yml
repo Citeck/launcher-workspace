@@ -1,8 +1,14 @@
 ---
+quickStartVariants:
+  - name: Quick Start With Demo Data
+    snapshot: community-demo-data
+  - name: Quick Start Without Demo Data
+# required for launcher 1.1.0 and should be removed
 fastStartVariants:
   - name: Fast Start With Demo Data
     snapshot: community-demo-data
   - name: Fast Start Without Demo Data
+# ================================================
 snapshots:
   - id: community-demo-data
     name: Demo Data
