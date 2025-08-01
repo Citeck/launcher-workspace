@@ -92,7 +92,3 @@ EcosPowerAttorneysApp:
   image:
     repository: core/ecos-power-of-attorneys
     tag: 1.1.1
-EcosProjectTrackerApp:
-  image:
-    repository: core/ecos-project-tracker
-    tag: 2.1.1
