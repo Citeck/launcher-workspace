@@ -12,9 +12,9 @@ fastStartVariants:
 snapshots:
   - id: community-demo-data
     name: Demo Data
-    url: https://github.com/Citeck/citeck-launcher/releases/download/1.1.4/community-demo-data.zip
-    size: 83.1m
-    sha256: 71b96d4fba65aa6dddd4c798beebe37e2355fc0154c8a45210048582e57ecf52
+    url: https://github.com/Citeck/citeck-launcher/releases/download/1.1.4/citeck-community-data-v2.zip
+    size: 85.7m
+    sha256: cd7e2099f67ef01413053e9ef4adc24bab9616cb5b5ef5373d598787c209d84d
 namespaceTemplates:
   - id: default
     name: Default
