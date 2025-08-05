@@ -12,9 +12,9 @@ fastStartVariants:
 snapshots:
   - id: community-demo-data
     name: Demo Data
-    url: https://github.com/Citeck/citeck-launcher/releases/download/1.1.4/citeck-community-data-v2.zip
-    size: 85.7m
-    sha256: cd7e2099f67ef01413053e9ef4adc24bab9616cb5b5ef5373d598787c209d84d
+    url: https://github.com/Citeck/citeck-launcher/releases/download/1.1.4/community-demo-data-v3.zip
+    size: 81.4m
+    sha256: 3f0a2d814dc4513ec94ee140dd93ac160d991c8b1669d7990b86b0a0ed52a345
 namespaceTemplates:
   - id: default
     name: Default
@@ -49,7 +49,7 @@ webapps:
     aliases: [ 'EcosProcessApp' ]
     defaultProps:
       heapSize: 512m
-      memoryLimit: 1200m
+      memoryLimit: 2048m
       dataSources:
         camunda:
           url: "jdbc:postgresql://${PG_HOST}:${PG_PORT}/citeck_camunda"
