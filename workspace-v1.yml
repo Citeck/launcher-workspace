@@ -48,8 +48,8 @@ webapps:
   - id: eproc
     aliases: [ 'EcosProcessApp' ]
     defaultProps:
-      heapSize: 512m
-      memoryLimit: 2048m
+      heapSize: 1g
+      memoryLimit: 2g
       dataSources:
         camunda:
           url: "jdbc:postgresql://${PG_HOST}:${PG_PORT}/citeck_camunda"
