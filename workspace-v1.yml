@@ -39,6 +39,11 @@ bundleRepos:
     url: https://github.com/Citeck/launcher-workspace.git
     branch: main
     path: enterprise
+  - id: community-rc
+    name: Community Release Candidates
+    url: https://github.com/Citeck/launcher-workspace.git
+    branch: main
+    path: community-rc
 citeckProxy:
   aliases: [ 'EcosProxyApp' ]
 defaultWebappProps:

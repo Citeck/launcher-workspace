@@ -1,0 +1,82 @@
+EcosProxyApp:
+  image:
+    repository: core/ecos-proxy-oidc
+    tag: 2.25.2
+EcosProcessApp:
+  image:
+    repository: core/ecos-process
+    tag: 2.26.0
+EcosModelApp:
+  image:
+    repository: core/ecos-model
+    tag: 2.34.1
+EcosAppsApp:
+  image:
+    repository: core/ecos-apps
+    tag: 2.24.3
+  ecosAppsImages:
+    - repository: core/ecos-order-pass
+      tag: 1.3.2
+    - repository: core/ecos-meetings
+      tag: 1.5.0
+    - repository: core/ecos-assignments
+      tag: 2.1.1
+    - repository: core/ecos-test-data-app
+      tag: 1.1.0
+    - repository: core/ecos-offers
+      tag: 1.7.0
+    - repository: core/ecos-time-tracking
+      tag: 1.5.0
+    - repository: core/ecos-aro
+      tag: 1.5.0
+    - repository: core/ecos-correspondence
+      tag: 1.5.0
+    - repository: core/ecos-contracts
+      tag: 1.13.0
+    - repository: core/ecos-crm
+      tag: 2.3.0
+    - repository: core/ecos-vacations
+      tag: 1.4.3
+    - repository: core/ecos-releases
+      tag: 1.2.0
+    - name: ecos-common-data-list
+      repository: core/ecos-common-data-list
+      tag: 1.15.0
+    - name: ru-working-calendar-app
+      repository: core/ru-working-calendar-app
+      tag: '2025'
+    - name: corporate-portal
+      repository: core/corporate-portal
+      tag: 1.1.0
+EcosGatewayApp:
+  image:
+    repository: core/ecos-gateway
+    tag: 3.3.0
+EcosUiservApp:
+  image:
+    repository: core/ecos-uiserv
+    tag: 2.32.0
+EcosHistoryApp:
+  image:
+    repository: core/ecos-history
+    tag: 2.22.1
+EcosNotificationsApp:
+  image:
+    repository: core/ecos-notifications
+    tag: 2.24.2
+EcosTransformationsApp:
+  image:
+    repository: core/ecos-transformations
+    tag: 1.17.0
+EcosEcomApp:
+  image:
+    repository: core/ecos-ecom
+    tag: 1.13.0
+EcosServiceDeskApp:
+  image:
+    repository: core/ecos-service-desk
+    tag: 1.16.0
+EcosPowerAttorneysApp:
+  image:
+    repository: core/ecos-power-of-attorneys
+    tag: 1.1.1
