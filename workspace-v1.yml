@@ -40,7 +40,7 @@ bundleRepos:
     branch: main
     path: enterprise
   - id: community-rc
-    name: Community Release Candidates
+    name: Community Release Candidates Bundles
     url: https://github.com/Citeck/launcher-workspace.git
     branch: main
     path: community-rc
