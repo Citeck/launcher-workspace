@@ -9,7 +9,7 @@ EcosProcessApp:
 EcosModelApp:
   image:
     repository: core/ecos-model
-    tag: 2.34.2
+    tag: 2.34.3
 EcosAppsApp:
   image:
     repository: core/ecos-apps
@@ -55,7 +55,7 @@ EcosGatewayApp:
 EcosUiservApp:
   image:
     repository: core/ecos-uiserv
-    tag: 2.32.0
+    tag: 2.32.1
 EcosHistoryApp:
   image:
     repository: core/ecos-history
