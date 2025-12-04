@@ -10,7 +10,7 @@ snapshots:
     size: 82m
     sha256: acee46fea497a70ead5dd2b97cae9c88a3ef12c75adc20e1b79a9092c15a8c1e
   - id: community-demo-data-2025.8
-    name: Demo Data (Release Candidate 2025.8)
+    name: Demo Data (Release Candidate 2025.12)
     url: https://github.com/Citeck/citeck-launcher/releases/download/v1.2.4/2025.8-demo-data.zip
     size: 66.4m
     sha256: 7217aa83236018517619598d3ff98e534ea0fc41afb1ce5290fef544f577ac4d
