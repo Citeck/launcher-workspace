@@ -67,7 +67,7 @@ webapps:
     aliases: [ 'EcosModelApp' ]
     defaultProps:
       heapSize: 500m
-      memoryLimit: 1100m
+      memoryLimit: 1200m
       environments:
         ECOS_INTEGRATIONS_ONLYOFFICE_HOST: "${ONLYOFFICE_HOST}"
         ECOS_INTEGRATIONS_KEYCLOAKADMIN_ENABLED: "${KK_ENABLED}"
