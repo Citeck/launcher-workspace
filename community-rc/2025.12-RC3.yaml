@@ -5,11 +5,11 @@ EcosProxyApp:
 EcosProcessApp:
   image:
     repository: core/ecos-process
-    tag: 2.27.0-snapshot
+    tag: 2.27.2
 EcosModelApp:
   image:
     repository: core/ecos-model
-    tag: 2.35.0-snapshot
+    tag: 2.35.2
 EcosAppsApp:
   image:
     repository: core/ecos-apps
@@ -41,7 +41,7 @@ EcosAppsApp:
       tag: 1.2.0
     - name: ecos-common-data-list
       repository: core/ecos-common-data-list
-      tag: 1.16.0-snapshot
+      tag: 1.16.0
     - name: ru-working-calendar-app
       repository: core/ru-working-calendar-app
       tag: '2025'
@@ -55,15 +55,15 @@ EcosGatewayApp:
 EcosUiservApp:
   image:
     repository: core/ecos-uiserv
-    tag: 2.32.3-snapshot
+    tag: 2.32.7
 EcosHistoryApp:
   image:
     repository: core/ecos-history
-    tag: 2.23.0-snapshot
+    tag: 2.23.0
 EcosNotificationsApp:
   image:
     repository: core/ecos-notifications
-    tag: 2.25.0-snapshot
+    tag: 2.25.0
 EcosTransformationsApp:
   image:
     repository: core/ecos-transformations
@@ -71,7 +71,7 @@ EcosTransformationsApp:
 EcosEcomApp:
   image:
     repository: core/ecos-ecom
-    tag: 1.13.0
+    tag: 1.13.1
 EcosServiceDeskApp:
   image:
     repository: core/ecos-service-desk
