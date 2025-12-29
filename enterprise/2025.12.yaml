@@ -1,15 +1,15 @@
 EcosProxyApp:
   image:
-    repository: core/ecos-proxy-oidc
-    tag: 2.25.2
+    repository: enterprise/ecos-proxy-oidc-ent
+    tag: 2.25.5
 EcosProcessApp:
   image:
     repository: core/ecos-process
-    tag: 2.26.0
+    tag: 2.27.3
 EcosModelApp:
   image:
     repository: core/ecos-model
-    tag: 2.34.2
+    tag: 2.35.6
 EcosAppsApp:
   image:
     repository: core/ecos-apps
@@ -41,7 +41,7 @@ EcosAppsApp:
       tag: 1.2.0
     - name: ecos-common-data-list
       repository: core/ecos-common-data-list
-      tag: 1.15.0
+      tag: 1.16.0
     - name: ru-working-calendar-app
       repository: core/ru-working-calendar-app
       tag: '2025'
@@ -55,27 +55,39 @@ EcosGatewayApp:
 EcosUiservApp:
   image:
     repository: core/ecos-uiserv
-    tag: 2.32.0
+    tag: 2.32.8
 EcosHistoryApp:
   image:
     repository: core/ecos-history
-    tag: 2.22.2
+    tag: 2.23.0
 EcosNotificationsApp:
   image:
     repository: core/ecos-notifications
-    tag: 2.24.2
+    tag: 2.25.0
+EcosIntegrationsApp:
+  image:
+    repository: enterprise/ecos-integrations
+    tag: 2.30.4
 EcosTransformationsApp:
   image:
     repository: core/ecos-transformations
-    tag: 1.17.1
+    tag: 1.17.8
+EcosContentApp:
+  image:
+    repository: enterprise/ecos-content
+    tag: 1.4.1
 EcosEcomApp:
   image:
     repository: core/ecos-ecom
-    tag: 1.13.0
+    tag: 1.13.2
 EcosServiceDeskApp:
   image:
     repository: core/ecos-service-desk
     tag: 1.16.0
+EcosEdiApp:
+  image:
+    repository: enterprise/ecos-edi
+    tag: 1.8.0
 EcosPowerAttorneysApp:
   image:
     repository: core/ecos-power-of-attorneys

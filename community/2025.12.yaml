@@ -1,15 +1,15 @@
 EcosProxyApp:
   image:
     repository: core/ecos-proxy-oidc
-    tag: 2.25.3
+    tag: 2.25.5
 EcosProcessApp:
   image:
     repository: core/ecos-process
-    tag: 2.27.2
+    tag: 2.27.3
 EcosModelApp:
   image:
     repository: core/ecos-model
-    tag: 2.35.2
+    tag: 2.35.6
 EcosAppsApp:
   image:
     repository: core/ecos-apps
@@ -55,7 +55,7 @@ EcosGatewayApp:
 EcosUiservApp:
   image:
     repository: core/ecos-uiserv
-    tag: 2.32.7
+    tag: 2.32.8
 EcosHistoryApp:
   image:
     repository: core/ecos-history
@@ -67,11 +67,11 @@ EcosNotificationsApp:
 EcosTransformationsApp:
   image:
     repository: core/ecos-transformations
-    tag: 1.17.1
+    tag: 1.17.8
 EcosEcomApp:
   image:
     repository: core/ecos-ecom
-    tag: 1.13.1
+    tag: 1.13.2
 EcosServiceDeskApp:
   image:
     repository: core/ecos-service-desk
