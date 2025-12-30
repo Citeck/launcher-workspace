@@ -1,12 +1,12 @@
 ---
 quickStartVariants:
   - name: Quick Start With Demo Data
-    snapshot: community-demo-data-2025.8
+    snapshot: community-demo-data-2025.12
   - name: Quick Start Without Demo Data
 snapshots:
-  - id: community-demo-data-2025.8
+  - id: community-demo-data-2025.12
     name: Demo Data
-    url: https://github.com/Citeck/citeck-launcher/releases/download/v1.2.4/2025.8-demo-data.zip
+    url: https://github.com/Citeck/citeck-launcher/releases/download/v1.3.5/2025.12-demo-data.zip
     size: 66.4m
     sha256: 7217aa83236018517619598d3ff98e534ea0fc41afb1ce5290fef544f577ac4d
 namespaceTemplates:
