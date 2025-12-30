@@ -44,7 +44,7 @@ EcosAppsApp:
       tag: 1.14.0
     - name: ru-working-calendar-app
       repository: core/ru-working-calendar-app
-      tag: '2025'
+      tag: '2026'
     - name: corporate-portal
       repository: core/corporate-portal
       tag: 1.1.0
