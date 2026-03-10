@@ -67,7 +67,7 @@ EcosNotificationsApp:
 EcosIntegrationsApp:
   image:
     repository: core/ecos-integrations
-    tag: 2.32.0
+    tag: 2.32.1
 EcosTransformationsApp:
   image:
     repository: core/ecos-transformations
