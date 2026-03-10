@@ -1,7 +1,7 @@
 EcosProxyApp:
   image:
     repository: core/ecos-proxy-oidc
-    tag: 2.26.3
+    tag: 2.26.4
 EcosProcessApp:
   image:
     repository: core/ecos-process
