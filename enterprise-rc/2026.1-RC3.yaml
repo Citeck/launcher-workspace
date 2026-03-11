@@ -95,7 +95,7 @@ EcosPowerAttorneysApp:
 EcosProjectTrackerApp:
   image:
     repository: core/ecos-project-tracker
-    tag: 2.8.1
+    tag: 2.8.3
 EcosAiApp:
   image:
     repository: enterprise/ai
