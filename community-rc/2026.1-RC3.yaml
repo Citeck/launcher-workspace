@@ -87,4 +87,4 @@ EcosPowerAttorneysApp:
 EcosProjectTrackerApp: # Citeck WebApp. Not a part of core package
   image:
     repository: core/ecos-project-tracker
-    tag: 2.8.3
+    tag: 2.8.4
