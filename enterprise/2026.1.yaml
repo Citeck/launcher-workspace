@@ -1,26 +1,26 @@
 EcosProxyApp:
   image:
-    repository: core/ecos-proxy-oidc
-    tag: 2.26.6
+    repository: enterprise/ecos-proxy-oidc-ent
+    tag: 2.26.8
 EcosProcessApp:
   image:
     repository: core/ecos-process
-    tag: 2.30.2
+    tag: 2.30.7
 EcosModelApp:
   image:
     repository: core/ecos-model
-    tag: 2.37.1
+    tag: 2.37.3
 EcosAppsApp:
   image:
     repository: core/ecos-apps
-    tag: 2.25.0
+    tag: 2.25.1
   ecosAppsImages:
     - repository: core/ecos-order-pass
       tag: 1.3.2
     - repository: core/ecos-meetings
       tag: 1.5.0
     - repository: core/ecos-assignments
-      tag: 2.2.0-snapshot
+      tag: 2.2.0
     - repository: core/ecos-test-data-app
       tag: 1.1.0
     - repository: core/ecos-offers
@@ -55,7 +55,7 @@ EcosGatewayApp:
 EcosUiservApp:
   image:
     repository: core/ecos-uiserv
-    tag: 2.34.1
+    tag: 2.34.3
 EcosHistoryApp:
   image:
     repository: core/ecos-history
@@ -67,11 +67,15 @@ EcosNotificationsApp:
 EcosIntegrationsApp:
   image:
     repository: core/ecos-integrations
-    tag: 2.32.1
+    tag: 2.32.4
 EcosTransformationsApp:
   image:
     repository: core/ecos-transformations
     tag: 1.20.0
+EcosContentApp:
+  image:
+    repository: enterprise/ecos-content
+    tag: 1.5.0
 EcosEcomApp:
   image:
     repository: core/ecos-ecom
@@ -80,11 +84,19 @@ EcosServiceDeskApp:
   image:
     repository: core/ecos-service-desk
     tag: 1.18.0
+EcosEdiApp:
+  image:
+    repository: enterprise/ecos-edi
+    tag: 1.11.0
 EcosPowerAttorneysApp:
   image:
     repository: core/ecos-power-of-attorneys
     tag: 1.2.0
-EcosProjectTrackerApp: # Citeck WebApp. Not a part of core package
+EcosProjectTrackerApp:
   image:
     repository: core/ecos-project-tracker
-    tag: 2.8.4
+    tag: 2.8.5
+EcosAiApp:
+  image:
+    repository: enterprise/ai
+    tag: 1.9.0
