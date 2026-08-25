@@ -104,3 +104,7 @@ EcosRagApp:
   image:
     repository: enterprise/citeck-rag
     tag: 1.2.2
+onlyoffice:
+  image:
+    repository: onlyoffice/documentserver
+    tag: 9.4.0.1
