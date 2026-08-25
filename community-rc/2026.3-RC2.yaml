@@ -92,3 +92,7 @@ onlyoffice:
   image:
     repository: onlyoffice/documentserver
     tag: 9.4.0.1
+postgres:
+  image:
+    repository: postgres
+    tag: '17.11'
