@@ -9,7 +9,7 @@ EcosProcessApp:
 EcosModelApp:
   image:
     repository: core/ecos-model
-    tag: 2.42.0
+    tag: 2.42.1
 EcosAppsApp:
   image:
     repository: core/ecos-apps
@@ -44,7 +44,7 @@ EcosAppsApp:
       tag: 1.17.0
     - name: ru-working-calendar-app
       repository: core/ru-working-calendar-app
-      tag: '2026'
+      tag: "2026"
     - name: corporate-portal
       repository: core/corporate-portal
       tag: 1.1.0
@@ -111,7 +111,7 @@ onlyoffice:
 postgres:
   image:
     repository: postgres
-    tag: '17.11'
+    tag: "17.11"
 rabbitmq:
   image:
     repository: rabbitmq
