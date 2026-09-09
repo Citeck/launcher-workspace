@@ -104,3 +104,7 @@ EcosRagApp:
   image:
     repository: enterprise/citeck-rag
     tag: 1.2.2
+qdrant:
+  image:
+    repository: qdrant/qdrant
+    tag: v1.14.1
