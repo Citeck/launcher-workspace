@@ -9,7 +9,7 @@ EcosProcessApp:
 EcosModelApp:
   image:
     repository: core/ecos-model
-    tag: 2.42.1
+    tag: 2.42.2
 EcosAppsApp:
   image:
     repository: core/ecos-apps
