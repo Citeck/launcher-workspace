@@ -17,6 +17,8 @@ snapshots:
 namespaceTemplates:
   - id: default
     name: Default
+    detachedApps:
+      - rag
     config:
       bundleRef: 'community:LATEST'
       authentication:
@@ -162,3 +164,8 @@ webapps:
     aliases: [ 'EcosProjectTrackerApp' ]
   - id: ai
     aliases: [ 'EcosAiApp' ]
+  - id: rag
+    aliases: [ 'EcosRagApp' ]
+    defaultProps:
+      heapSize: 512m
+      memoryLimit: 1200m
