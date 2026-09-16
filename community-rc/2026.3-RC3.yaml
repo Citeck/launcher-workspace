@@ -100,3 +100,16 @@ rabbitmq:
   image:
     repository: rabbitmq
     tag: 4.2.9-management
+dependencies:
+  postgres:
+    image:
+      repository: postgres
+      tag: "18.6"
+  rabbitmq:
+    image:
+      repository: rabbitmq
+      tag: 4.2.9-management
+  onlyoffice:
+    image:
+      repository: onlyoffice/documentserver
+      tag: 9.4.0.1
