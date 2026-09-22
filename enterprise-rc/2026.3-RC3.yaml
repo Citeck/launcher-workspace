@@ -104,22 +104,18 @@ EcosRagApp:
   image:
     repository: enterprise/citeck-rag
     tag: 1.2.2
+stt-sidecar: # speech-to-text sidecar for the AI assistant
+  image:
+    repository: harbor.citeck.ru/community/stt-sidecar
+    tag: 1.0.0
+observer: # citeck-observer: log/OTLP intake, built-in UI, infrastructure monitoring
+  image:
+    repository: harbor.citeck.ru/public/citeck-observer
+    tag: v1.5.2
 qdrant:
   image:
     repository: qdrant/qdrant
     tag: v1.14.1
-onlyoffice:
-  image:
-    repository: onlyoffice/documentserver
-    tag: 9.4.0.1
-postgres:
-  image:
-    repository: postgres
-    tag: "17.11"
-rabbitmq:
-  image:
-    repository: rabbitmq
-    tag: 4.2.9-management
 dependencies:
   postgres:
     image:
@@ -137,3 +133,8 @@ dependencies:
     image:
       repository: onlyoffice/documentserver
       tag: 9.4.0.1
+  # The observer's own PostgreSQL — separate from the stand's main database.
+  observer-postgres:
+    image:
+      repository: postgres
+      tag: "18.6"

@@ -18,7 +18,14 @@ namespaceTemplates:
   - id: default
     name: Default
     detachedApps:
+      # Optional apps a bundle may ship: generated, but not started by the
+      # launcher itself. A companion is listed WITH its owner — otherwise a
+      # stand with the owner switched off still pays for the companion.
       - rag
+      - qdrant
+      - stt-sidecar
+      - observer
+      - observer-postgres
     config:
       bundleRef: 'community:LATEST'
       authentication:

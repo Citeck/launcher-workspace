@@ -88,18 +88,10 @@ EcosProjectTrackerApp: # Citeck WebApp. Not a part of core package
   image:
     repository: core/ecos-project-tracker
     tag: 2.11.0
-onlyoffice:
+observer: # citeck-observer: log/OTLP intake, built-in UI, infrastructure monitoring
   image:
-    repository: onlyoffice/documentserver
-    tag: 9.4.0.1
-postgres:
-  image:
-    repository: postgres
-    tag: "17.11"
-rabbitmq:
-  image:
-    repository: rabbitmq
-    tag: 4.2.9-management
+    repository: harbor.citeck.ru/public/citeck-observer
+    tag: v1.5.2
 dependencies:
   postgres:
     image:
@@ -113,3 +105,8 @@ dependencies:
     image:
       repository: onlyoffice/documentserver
       tag: 9.4.0.1
+  # The observer's own PostgreSQL — separate from the stand's main database.
+  observer-postgres:
+    image:
+      repository: postgres
+      tag: "18.6"
