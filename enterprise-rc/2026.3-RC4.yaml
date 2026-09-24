@@ -146,6 +146,10 @@ dependencies:
     image:
       repository: onlyoffice/documentserver
       tag: 9.4.0.1
+  mailpit:
+    image:
+      repository: axllent/mailpit
+      tag: v1.31.2
   # The observer's own PostgreSQL — separate from the stand's main database.
   observer-postgres:
     image:
