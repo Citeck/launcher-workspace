@@ -125,10 +125,23 @@ dependencies:
     image:
       repository: rabbitmq
       tag: 4.2.9-management
+  # A ladder, one rung per minor, each the latest patch of its minor: Qdrant
+  # reads storage written by the previous minor only, and 1.17 no longer reads
+  # the RocksDB data that 1.16 migrates away from. The launcher (2.13+) walks
+  # the rungs above a stand's version in one migration; a new stand starts on
+  # the last rung.
   qdrant:
     image:
-      repository: qdrant/qdrant
-      tag: v1.19.1
+      - repository: qdrant/qdrant
+        tag: v1.15.5
+      - repository: qdrant/qdrant
+        tag: v1.16.3
+      - repository: qdrant/qdrant
+        tag: v1.17.1
+      - repository: qdrant/qdrant
+        tag: v1.18.3
+      - repository: qdrant/qdrant
+        tag: v1.19.1
   onlyoffice:
     image:
       repository: onlyoffice/documentserver
