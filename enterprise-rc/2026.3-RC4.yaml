@@ -1,0 +1,140 @@
+EcosProxyApp:
+  image:
+    repository: enterprise/ecos-proxy-oidc-ent
+    tag: 2.30.0
+EcosProcessApp:
+  image:
+    repository: core/ecos-process
+    tag: 2.36.0
+EcosModelApp:
+  image:
+    repository: core/ecos-model
+    tag: 2.43.0
+EcosAppsApp:
+  image:
+    repository: core/ecos-apps
+    tag: 2.28.0
+  ecosAppsImages:
+    - repository: core/ecos-order-pass
+      tag: 1.3.3
+    - repository: core/ecos-meetings
+      tag: 1.5.2
+    - repository: core/ecos-assignments
+      tag: 2.2.1
+    - repository: core/ecos-test-data-app
+      tag: 1.1.0
+    - repository: core/ecos-offers
+      tag: 1.7.3
+    - repository: core/ecos-time-tracking
+      tag: 1.5.2
+    - repository: core/ecos-aro
+      tag: 1.6.5
+    - repository: core/ecos-correspondence
+      tag: 1.6.2
+    - repository: core/ecos-contracts
+      tag: 1.13.3
+    - repository: core/ecos-crm
+      tag: 2.4.0
+    - repository: core/ecos-vacations
+      tag: 1.4.4
+    - repository: core/ecos-releases
+      tag: 1.2.6
+    - name: ecos-common-data-list
+      repository: core/ecos-common-data-list
+      tag: 1.18.0
+    - name: ru-working-calendar-app
+      repository: core/ru-working-calendar-app
+      tag: "2026.2"
+    - name: corporate-portal
+      repository: core/corporate-portal
+      tag: 1.1.2
+EcosGatewayApp:
+  image:
+    repository: core/ecos-gateway
+    tag: 3.8.0
+EcosUiservApp:
+  image:
+    repository: core/ecos-uiserv
+    tag: 2.40.0
+EcosHistoryApp:
+  image:
+    repository: core/ecos-history
+    tag: 2.27.0
+EcosNotificationsApp:
+  image:
+    repository: core/ecos-notifications
+    tag: 2.28.0
+EcosIntegrationsApp:
+  image:
+    repository: core/ecos-integrations
+    tag: 2.37.0
+EcosTransformationsApp:
+  image:
+    repository: core/ecos-transformations
+    tag: 1.24.1
+EcosContentApp:
+  image:
+    repository: enterprise/ecos-content
+    tag: 1.7.0
+EcosEcomApp:
+  image:
+    repository: core/ecos-ecom
+    tag: 1.15.0
+EcosServiceDeskApp:
+  image:
+    repository: core/ecos-service-desk
+    tag: 1.20.0
+EcosEdiApp:
+  image:
+    repository: enterprise/ecos-edi
+    tag: 1.13.0
+EcosPowerAttorneysApp:
+  image:
+    repository: core/ecos-power-of-attorneys
+    tag: 1.3.0
+EcosProjectTrackerApp:
+  image:
+    repository: core/ecos-project-tracker
+    tag: 2.11.1
+EcosAiApp:
+  image:
+    repository: enterprise/ai
+    tag: 2.0.0
+EcosRagApp:
+  image:
+    repository: enterprise/citeck-rag
+    tag: 1.3.0
+stt-sidecar: # speech-to-text sidecar for the AI assistant
+  image:
+    repository: harbor.citeck.ru/community/stt-sidecar
+    tag: 1.0.0
+observer: # citeck-observer: log/OTLP intake, built-in UI, infrastructure monitoring
+  image:
+    repository: harbor.citeck.ru/public/citeck-observer
+    tag: v1.5.2
+qdrant:
+  image:
+    repository: qdrant/qdrant
+    tag: v1.14.1
+dependencies:
+  postgres:
+    image:
+      repository: postgres
+      tag: "18.6"
+  rabbitmq:
+    image:
+      repository: rabbitmq
+      tag: 4.2.9-management
+  qdrant:
+    image:
+      repository: qdrant/qdrant
+      tag: v1.19.1
+  onlyoffice:
+    image:
+      repository: onlyoffice/documentserver
+      tag: 9.4.0.1
+  # The observer's own PostgreSQL — separate from the stand's main database.
+  observer-postgres:
+    image:
+      repository: postgres
+      tag: "18.6"
