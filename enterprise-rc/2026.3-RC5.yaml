@@ -164,13 +164,3 @@ dependencies:
     image:
       repository: postgres
       tag: "18.6"
-  # S3-compatible store for ecos-content: declared in workspace-v1.yml
-  # (additionalApps), detached by its default template. Every later
-  # enterprise and enterprise-rc bundle must keep this entry: a bundle without
-  # it removes the store from every stand that keeps content in it. Not a
-  # migrated dependency — a new tag goes straight onto the data, so only ever
-  # raise it, and keep it at 4.48+ (the workspace cmd uses a 4.48 flag).
-  seaweedfs:
-    image:
-      repository: chrislusf/seaweedfs
-      tag: "4.48"
