@@ -20,7 +20,9 @@ namespaceTemplates:
     detachedApps:
       # Optional apps a bundle may ship: generated, but not started by the
       # launcher itself. A companion is listed WITH its owner — otherwise a
-      # stand with the owner switched off still pays for the companion.
+      # stand with the owner switched off still pays for the companion. An app
+      # the namespace's own configuration requires starts anyway: seaweedfs on
+      # a namespace that stores its content in S3 (contentStorage below).
       - rag
       - qdrant
       - stt-sidecar
@@ -72,10 +74,11 @@ secrets:
   # own copy the first time and keeps it (the password lives in the volume).
   - id: observer-db
     value: observer
-  # SeaweedFS S3 secret key (the seaweedfs entry below). NEVER change this
-  # value: a namespace restored from a snapshot into a new namespace is seeded
-  # with the current default, while its database keeps the key ecos-content
-  # was connected with. The seaweedfs entry, this secret and `- seaweedfs` in
+  # SeaweedFS S3 secret key, read by the seaweedfs entry and by
+  # `contentStorage.s3`. NEVER change this value: a namespace restored from a
+  # snapshot into a new namespace is seeded with the current default, while
+  # its database keeps the key ecos-content was connected with. The seaweedfs
+  # entry, this secret, the contentStorage block and `- seaweedfs` in
   # namespaceTemplates[default].detachedApps travel together.
   - id: seaweedfs-s3
     value: seaweedfs-s3-secret
@@ -169,13 +172,21 @@ additionalApps:
   # SeaweedFS: an S3-compatible store for ecos-content (Enterprise only —
   # Community has no ecos-content). Like the observer it is configuration: no
   # image here — a bundle that names `seaweedfs` in its `dependencies:` section
-  # gets the container, every other bundle gets nothing. Not started on its
-  # own on namespaces created from the `default` template (see detachedApps);
-  # a namespace with no or another template starts it like any new app.
-  # Nothing may `dependsOn` it, and ecos-content is NOT wired to it here:
-  # connecting is an explicit step in ECOS after `citeck start seaweedfs`.
-  # Not part of the observer reference copy; the entry, the seaweedfs-s3
-  # secret and the detachedApps line travel together.
+  # gets the container, every other bundle gets nothing. It is the provider of
+  # the S3 content storage option (the top-level `contentStorage` block).
+  # A namespace that stores its content in S3 (namespace.yml
+  # `contentStorage: {type: S3}`) needs it: a launcher that supports
+  # contentStorage starts it with that namespace whatever detachedApps says,
+  # makes ecos-content wait for it and connects ecos-content to it once, by
+  # itself. Every other namespace — DB content storage, the default, and any
+  # namespace on an older launcher — does not start it on its own when created
+  # from the `default` template (see detachedApps; a namespace with no or
+  # another template starts it like any new app), and connecting it there is
+  # an explicit step in ECOS after `citeck start seaweedfs`.
+  # Nothing in this file may `dependsOn` it: on a DB namespace it is detached,
+  # and a dependent would wait for it forever. The entry, the seaweedfs-s3
+  # secret, the contentStorage block and the detachedApps line travel
+  # together.
   - name: seaweedfs
     kind: THIRD_PARTY
     cmd:
@@ -203,11 +214,13 @@ additionalApps:
       - -s3.port.lance=0
     environments:
       # One admin S3 identity; anonymous S3 requests are refused. The key is a
-      # public default — rotate it per stand before storing real content. The
-      # filer (8888), volume (9340) and admin/worker (23646/33646) ports need
-      # no credentials at all: every container on the namespace network can
-      # read and write the bucket through them (server mode publishes nothing,
-      # desktop only 8333 on loopback).
+      # public default — rotate it per stand before storing real content, and
+      # in the ECOS secret ecos-content connects with as well: the launcher
+      # writes that record once and never updates it. The filer (8888), volume
+      # (9340) and admin/worker (23646/33646) ports need no credentials at
+      # all: every container on the namespace network can read and write the
+      # bucket through them (server mode publishes nothing, desktop only 8333
+      # on loopback).
       AWS_ACCESS_KEY_ID: citeck
       AWS_SECRET_ACCESS_KEY: ${secret:seaweedfs-s3}
       # ecos-content's bucket, created at start. Its MinIO client needs the
@@ -232,6 +245,28 @@ additionalApps:
     resources:
       limits: {memory: 1g}
     stopTimeout: 15
+# S3 content storage: where a namespace that chose "S3 (SeaweedFS)" as its
+# content storage (namespace.yml `contentStorage: {type: S3}`) keeps its
+# ecos-content files. Offered only for a bundle that has ecos-content and names
+# the provider's image. `app` is the additionalApps entry that serves S3; the
+# rest is how ecos-content reaches it. The launcher writes exactly these values
+# into the secret, endpoint and storage records it creates in ECOS, and points
+# default-content-storage at that storage — once, and never over an
+# administrator's choice. The reference copy of this block, the seaweedfs entry
+# and its secret lives in the launcher repository,
+# internal/namespace/testdata/content-storage-workspace.yml; keep them
+# identical. Launchers that do not support contentStorage ignore the key.
+contentStorage:
+  s3:
+    app: seaweedfs
+    # The endpoint as ecos-content reaches it: the entry's name and S3 port on
+    # the namespace network.
+    url: http://seaweedfs:8333
+    # The entry's S3_BUCKET — the bucket it creates at start.
+    bucket: ecos-content
+    # The entry's AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+    accessKey: citeck
+    secretKey: ${secret:seaweedfs-s3}
 defaultWebappProps:
   heapSize: "256m"
   memoryLimit: "1g"
