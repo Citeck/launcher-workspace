@@ -159,6 +159,10 @@ dependencies:
     image:
       repository: axllent/mailpit
       tag: v1.31.2
+  pgadmin:
+    image:
+      repository: dpage/pgadmin4
+      tag: "9.18"
   # The observer's own PostgreSQL — separate from the stand's main database.
   observer-postgres:
     image:
