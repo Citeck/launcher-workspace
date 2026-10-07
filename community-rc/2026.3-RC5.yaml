@@ -1,11 +1,6 @@
-# Keycloak 26.7 needs a launcher whose Keycloak init script handles token
-# introspection (audience) and the realm session-timeout validation; a launcher
-# older than this refuses to create or switch a namespace to this bundle, and
-# its LATEST stays on the previous release candidate.
-minLauncherVersion: "2.15.5"
 EcosProxyApp:
   image:
-    repository: enterprise/ecos-proxy-oidc-ent
+    repository: core/ecos-proxy-oidc
     tag: 2.30.0
 EcosProcessApp:
   image:
@@ -77,10 +72,6 @@ EcosTransformationsApp:
   image:
     repository: core/ecos-transformations
     tag: 1.24.1
-EcosContentApp:
-  image:
-    repository: enterprise/ecos-content
-    tag: 1.7.0
 EcosEcomApp:
   image:
     repository: core/ecos-ecom
@@ -89,38 +80,18 @@ EcosServiceDeskApp:
   image:
     repository: core/ecos-service-desk
     tag: 1.20.0
-EcosEdiApp:
-  image:
-    repository: enterprise/ecos-edi
-    tag: 1.13.0
 EcosPowerAttorneysApp:
   image:
     repository: core/ecos-power-of-attorneys
     tag: 1.3.0
-EcosProjectTrackerApp:
+EcosProjectTrackerApp: # Citeck WebApp. Not a part of core package
   image:
     repository: core/ecos-project-tracker
     tag: 2.11.2
-EcosAiApp:
-  image:
-    repository: enterprise/ai
-    tag: 2.0.0
-EcosRagApp:
-  image:
-    repository: enterprise/citeck-rag
-    tag: 1.3.0
-stt-sidecar: # speech-to-text sidecar for the AI assistant
-  image:
-    repository: harbor.citeck.ru/community/stt-sidecar
-    tag: 1.1.0
 observer: # citeck-observer: log/OTLP intake, built-in UI, infrastructure monitoring
   image:
     repository: harbor.citeck.ru/public/citeck-observer
     tag: v1.5.2
-qdrant:
-  image:
-    repository: qdrant/qdrant
-    tag: v1.14.1
 dependencies:
   postgres:
     image:
@@ -130,27 +101,6 @@ dependencies:
     image:
       repository: rabbitmq
       tag: 4.2.9-management
-  keycloak:
-    image:
-      repository: keycloak/keycloak
-      tag: 26.7.4
-  # A ladder, one rung per minor, each the latest patch of its minor: Qdrant
-  # reads storage written by the previous minor only, and 1.17 no longer reads
-  # the RocksDB data that 1.16 migrates away from. The launcher (2.13+) walks
-  # the rungs above a stand's version in one migration; a new stand starts on
-  # the last rung.
-  qdrant:
-    image:
-      - repository: qdrant/qdrant
-        tag: v1.15.5
-      - repository: qdrant/qdrant
-        tag: v1.16.3
-      - repository: qdrant/qdrant
-        tag: v1.17.1
-      - repository: qdrant/qdrant
-        tag: v1.18.3
-      - repository: qdrant/qdrant
-        tag: v1.19.1
   onlyoffice:
     image:
       repository: onlyoffice/documentserver
