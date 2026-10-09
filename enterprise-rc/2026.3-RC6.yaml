@@ -103,7 +103,7 @@ EcosProjectTrackerApp:
 EcosAiApp:
   image:
     repository: enterprise/ai
-    tag: 2.0.0
+    tag: 2.1.0-snapshot
 EcosRagApp:
   image:
     repository: enterprise/citeck-rag
@@ -125,6 +125,10 @@ dependencies:
     image:
       repository: postgres
       tag: "18.6"
+  zookeeper:
+    image:
+      repository: zookeeper
+      tag: 3.9.6
   rabbitmq:
     image:
       repository: rabbitmq
@@ -132,7 +136,7 @@ dependencies:
   keycloak:
     image:
       repository: keycloak/keycloak
-      tag: 26.7.4
+      tag: 26.7.5
   # A ladder, one rung per minor, each the latest patch of its minor: Qdrant
   # reads storage written by the previous minor only, and 1.17 no longer reads
   # the RocksDB data that 1.16 migrates away from. The launcher (2.13+) walks
@@ -149,7 +153,7 @@ dependencies:
       - repository: qdrant/qdrant
         tag: v1.18.3
       - repository: qdrant/qdrant
-        tag: v1.19.1
+        tag: v1.19.2
   onlyoffice:
     image:
       repository: onlyoffice/documentserver
@@ -157,7 +161,7 @@ dependencies:
   mailpit:
     image:
       repository: axllent/mailpit
-      tag: v1.31.2
+      tag: v1.31.4
   pgadmin:
     image:
       repository: dpage/pgadmin4
