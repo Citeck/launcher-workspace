@@ -20,12 +20,15 @@ namespaceTemplates:
     detachedApps:
       # Optional apps a bundle may ship: generated, but not started by the
       # launcher itself. A companion is listed WITH its owner — otherwise a
-      # stand with the owner switched off still pays for the companion.
+      # stand with the owner switched off still pays for the companion. An app
+      # the namespace's own configuration requires starts anyway: seaweedfs on
+      # a namespace that stores its content in S3 (contentStorage below).
       - rag
       - qdrant
       - stt-sidecar
       - observer
       - observer-postgres
+      - seaweedfs
     config:
       bundleRef: 'community:LATEST'
       authentication:
@@ -61,8 +64,8 @@ citeckProxy:
   aliases: [ 'EcosProxyApp' ]
 # The observer and its database are configuration: the launcher has no code
 # for them (2.15+). Whether a stand has them is the bundle's answer — it names
-# the `observer` and `observer-postgres` images. The reference copy of this
-# block lives in the launcher repository,
+# the `observer` and `observer-postgres` images. The reference copy of the
+# observer entries lives in the launcher repository,
 # internal/namespace/testdata/observer-workspace.yml; keep the two identical.
 # Launchers before 2.15 do not understand it, drop `additionalApps` as a whole
 # and run their built-in observer instead.
@@ -71,6 +74,23 @@ secrets:
   # own copy the first time and keeps it (the password lives in the volume).
   - id: observer-db
     value: observer
+  # SeaweedFS keys: the S3 secret key (read by the seaweedfs entry and by
+  # `contentStorage.s3`) and the key its file tokens are signed with.
+  # GENERATED: each namespace draws its own values the first time and keeps
+  # them for good, so no stand runs on a key published here. Requires a
+  # launcher supporting nested generated options and type: SEAWEEDFS; older
+  # launchers read workspace-v1.yml instead. A
+  # namespace restored without exported secrets gets new values;
+  # on an S3 namespace generation supplies the new key to ecos-content
+  # through native ECOS_SECRET_* environment variables. The seaweedfs entry,
+  # these secrets, the contentStorage block, the SeaweedFS link and `- seaweedfs` in
+  # namespaceTemplates[default].detachedApps travel together.
+  - id: seaweedfs-s3-key
+    generated:
+      length: 40
+  - id: seaweedfs-jwt
+    generated:
+      length: 48
 additionalApps:
   - name: observer-postgres
     type: POSTGRES
@@ -158,6 +178,67 @@ additionalApps:
       zk_monitor.enabled: true
       zk_monitor.hosts: localhost:2181
       pg_monitor.enabled: true
+  # Managed local SeaweedFS. Launcher owns mini, /data, volume generations,
+  # stable node identity, standard probes, resource defaults and desktop ports.
+  # The bundle supplies the image; absent image means no store is generated.
+  # settings overrides only optional mini flags, as scalar YAML values.
+  # References below resolve separately for every namespace. Native ECOS env
+  # gives ecos-content the same S3 key; JWT keys stay with the provider.
+  - name: seaweedfs
+    type: SEAWEEDFS
+    settings:
+      admin.ui: true
+      s3.readerCacheSizeMB: 64
+      s3.concurrentUploadLimitMB: 128
+    environments:
+      AWS_ACCESS_KEY_ID: citeck
+      AWS_SECRET_ACCESS_KEY: ${secret:seaweedfs-s3-key}
+      WEED_JWT_SIGNING_KEY: ${secret:seaweedfs-jwt}
+      WEED_JWT_SIGNING_READ_KEY: ${secret:seaweedfs-jwt}
+      WEED_JWT_FILER_SIGNING_KEY: ${secret:seaweedfs-jwt}
+      WEED_JWT_FILER_SIGNING_READ_KEY: ${secret:seaweedfs-jwt}
+      WEED_ADMIN_USER: admin
+      WEED_ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      S3_BUCKET: ecos-content
+
+# Default namespace-internal S3 provider available where the bundle includes
+# ecos-content and names this provider's image. The namespace chooses DB/S3;
+# secrets resolve per namespace. Endpoint and credentials are supplied to
+# ecos-content as native ECOS environment; only default-config is mutated.
+# Concrete external S3 deployment settings belong in namespace configuration.
+
+contentStorage:
+  s3:
+    app: seaweedfs
+    # The product name the content storage option is labelled with:
+    # "S3 (SeaweedFS)". Optional; the app id stands in for it.
+    title: SeaweedFS
+    # The endpoint as ecos-content reaches it: the entry's name and S3 port on
+    # the namespace network.
+    url: http://seaweedfs:8333
+    # The entry's S3_BUCKET — the bucket it creates at start.
+    bucket: ecos-content
+    # The entry's AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+    accessKey: citeck
+    secretKey: ${secret:seaweedfs-s3-key}
+# Extra links in the launcher's sidebar (desktop; server mode has no sidebar).
+# A link whose dependsOn app the namespace does not have is hidden, one whose
+# app is not RUNNING is shown greyed out. Launchers before 2.8 ignore the key.
+links:
+  # The SeaweedFS admin UI: the bucket's files, volumes, cluster state. Hidden
+  # where the bundle ships no SeaweedFS, greyed out where it is detached (a
+  # namespace that keeps its content in the database). It is the entry's
+  # admin port, published on loopback on desktop; in server mode the same URL
+  # works through an SSH tunnel (docs/content-storage.md in the launcher
+  # repository). "Apps" puts it in the sidebar's own Applications group, after
+  # RabbitMQ and PgAdmin. Launcher 2.16.1+ reads this workspace-v2.yml;
+  # older launchers keep the separate compatible workspace-v1.yml.
+  - name: SeaweedFS
+    url: http://127.0.0.1:23646
+    icon: seaweedfs
+    category: Apps
+    description: "SeaweedFS stores ecos-content files in S3.\nUsername: admin\nPassword: admin"
+    dependsOn: [seaweedfs]
 defaultWebappProps:
   heapSize: "256m"
   memoryLimit: "1g"

@@ -1,10 +1,7 @@
-# 2026.3-RC6: RC5 plus SeaweedFS, the S3 store behind the "content storage:
-# S3" namespace option. That option, the generated secrets the store's keys
-# come from and the one-time connection of ecos-content need launcher 2.16.0;
-# an older launcher refuses to create or switch a namespace to this bundle, and
-# its LATEST stays on RC5 (which does not name SeaweedFS). Everything else,
-# Keycloak 26.7 included, is RC5 unchanged.
-minLauncherVersion: "2.16.0"
+# RC6 includes managed SeaweedFS declared in workspace-v2.yml.
+# Launcher 2.16.1+ selects that format; older launchers keep workspace-v1.yml
+# and must not select this bundle. Their LATEST remains on a compatible bundle.
+minLauncherVersion: "2.16.1"
 EcosProxyApp:
   image:
     repository: enterprise/ecos-proxy-oidc-ent
@@ -41,7 +38,7 @@ EcosAppsApp:
     - repository: core/ecos-contracts
       tag: 1.13.3
     - repository: core/ecos-crm
-      tag: 2.4.0
+      tag: 2.5.0
     - repository: core/ecos-vacations
       tag: 1.4.4
     - repository: core/ecos-releases
@@ -62,7 +59,7 @@ EcosGatewayApp:
 EcosUiservApp:
   image:
     repository: core/ecos-uiserv
-    tag: 2.40.0
+    tag: 2.41.0-snapshot
 EcosHistoryApp:
   image:
     repository: core/ecos-history
@@ -74,7 +71,7 @@ EcosNotificationsApp:
 EcosIntegrationsApp:
   image:
     repository: core/ecos-integrations
-    tag: 2.37.0
+    tag: 2.38.0
 EcosTransformationsApp:
   image:
     repository: core/ecos-transformations
@@ -82,11 +79,11 @@ EcosTransformationsApp:
 EcosContentApp:
   image:
     repository: enterprise/ecos-content
-    tag: 1.7.0
+    tag: 1.7.2
 EcosEcomApp:
   image:
     repository: core/ecos-ecom
-    tag: 1.15.0
+    tag: 1.16.0
 EcosServiceDeskApp:
   image:
     repository: core/ecos-service-desk
@@ -114,7 +111,7 @@ EcosRagApp:
 stt-sidecar: # speech-to-text sidecar for the AI assistant
   image:
     repository: harbor.citeck.ru/community/stt-sidecar
-    tag: 1.0.0
+    tag: 1.1.0
 observer: # citeck-observer: log/OTLP intake, built-in UI, infrastructure monitoring
   image:
     repository: harbor.citeck.ru/public/citeck-observer
@@ -161,17 +158,17 @@ dependencies:
     image:
       repository: axllent/mailpit
       tag: v1.31.2
+  pgadmin:
+    image:
+      repository: dpage/pgadmin4
+      tag: "9.18"
   # The observer's own PostgreSQL — separate from the stand's main database.
   observer-postgres:
     image:
       repository: postgres
       tag: "18.6"
-  # S3-compatible store for ecos-content: declared in workspace-v1.yml
-  # (additionalApps), detached by its default template. Every later
-  # enterprise and enterprise-rc bundle must keep this entry: a bundle without
-  # it removes the store from every stand that keeps content in it. Not a
-  # migrated dependency — a new tag goes straight onto the data, so only ever
-  # raise it, and keep it at 4.48+ (the workspace cmd uses a 4.48 flag).
+  # Managed S3 storage. Keep this dependency in later Enterprise bundles
+  # so namespaces using S3 retain access to their stored files.
   seaweedfs:
     image:
       repository: chrislusf/seaweedfs
