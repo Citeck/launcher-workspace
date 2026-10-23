@@ -5,19 +5,19 @@ minLauncherVersion: "2.16.1"
 EcosProxyApp:
   image:
     repository: enterprise/ecos-proxy-oidc-ent
-    tag: 2.31.0-snapshot
+    tag: 2.31.0
 EcosProcessApp:
   image:
     repository: core/ecos-process
-    tag: 2.37.0-snapshot
+    tag: 2.37.0
 EcosModelApp:
   image:
     repository: core/ecos-model
-    tag: 2.44.0-snapshot
+    tag: 2.44.0
 EcosAppsApp:
   image:
     repository: core/ecos-apps
-    tag: 2.28.1
+    tag: 2.29.0
   ecosAppsImages:
     - repository: core/ecos-order-pass
       tag: 1.3.3
@@ -30,7 +30,7 @@ EcosAppsApp:
     - repository: core/ecos-offers
       tag: 1.7.3
     - repository: core/ecos-time-tracking
-      tag: 1.5.2
+      tag: 1.6.3
     - repository: core/ecos-aro
       tag: 1.6.5
     - repository: core/ecos-correspondence
@@ -55,59 +55,59 @@ EcosAppsApp:
 EcosGatewayApp:
   image:
     repository: core/ecos-gateway
-    tag: 3.8.0
+    tag: 3.9.0
 EcosUiservApp:
   image:
     repository: core/ecos-uiserv
-    tag: 2.41.0-snapshot
+    tag: 2.41.1
 EcosHistoryApp:
   image:
     repository: core/ecos-history
-    tag: 2.27.0
+    tag: 2.28.0
 EcosNotificationsApp:
   image:
     repository: core/ecos-notifications
-    tag: 2.28.0
+    tag: 2.29.0
 EcosIntegrationsApp:
   image:
     repository: core/ecos-integrations
-    tag: 2.38.0
+    tag: 2.39.0
 EcosTransformationsApp:
   image:
     repository: core/ecos-transformations
-    tag: 1.24.1
+    tag: 1.25.0
 EcosContentApp:
   image:
     repository: enterprise/ecos-content
-    tag: 1.7.2
+    tag: 1.8.0
 EcosEcomApp:
   image:
     repository: core/ecos-ecom
-    tag: 1.16.0
+    tag: 1.17.0
 EcosServiceDeskApp:
   image:
     repository: core/ecos-service-desk
-    tag: 1.20.0
+    tag: 1.21.1
 EcosEdiApp:
   image:
     repository: enterprise/ecos-edi
-    tag: 1.13.0
+    tag: 1.14.0
 EcosPowerAttorneysApp:
   image:
     repository: core/ecos-power-of-attorneys
-    tag: 1.3.0
+    tag: 1.4.0
 EcosProjectTrackerApp:
   image:
     repository: core/ecos-project-tracker
-    tag: 2.11.2
+    tag: 2.12.0
 EcosAiApp:
   image:
     repository: enterprise/ai
-    tag: 2.1.0-snapshot
+    tag: 2.1.0
 EcosRagApp:
   image:
     repository: enterprise/citeck-rag
-    tag: 1.3.0
+    tag: 1.4.0
 stt-sidecar: # speech-to-text sidecar for the AI assistant
   image:
     repository: harbor.citeck.ru/community/stt-sidecar
