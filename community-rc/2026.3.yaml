@@ -2,7 +2,7 @@ minLauncherVersion: "2.16.1"
 EcosProxyApp:
   image:
     repository: core/ecos-proxy-oidc
-    tag: 2.31.1
+    tag: 2.31.2
 EcosProcessApp:
   image:
     repository: core/ecos-process
