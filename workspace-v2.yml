@@ -184,6 +184,41 @@ additionalApps:
       zk_monitor.enabled: true
       zk_monitor.hosts: localhost:2181
       pg_monitor.enabled: true
+  # The recognition service of the beta feature documentScanning (Enterprise bundles,
+  # `experimental:` section). No image: the bundle names it, and only for a stand that
+  # switched the feature on. The microservice ocr reaches it as http://ocr-sidecar:8095.
+  - name: ocr-sidecar
+    kind: CITECK_ADDITIONAL
+    environments:
+      # The engine when Citeck names none: paddleocr | tesseract. The setting "ocr-engine"
+      # of Citeck names one per scan.
+      OCR_ENGINE: paddleocr
+      OCR_TESSERACT_LANG: rus+eng
+      # The scanner folder: a host folder mounted as /inbox (see volumes). Without it scans
+      # are only uploaded by hand.
+      # OCR_INBOX_ROOT: /inbox
+      # OCR_INBOX_DIR: /inbox
+      # The day in the names of processed/<date> and the time in the log of the service.
+      TZ: Europe/Moscow
+    # Desktop mode only, bound to loopback: the status page of the service.
+    ports: ["18095:8095"]
+    volumes:
+      # the state of the service: which engine came up, what the folder has given away
+      - "ocr_sidecar_data:/data"
+      # - "/srv/scans:/inbox"
+    startupConditions:
+      - probe:
+          # 200 once the engine of OCR_ENGINE is loaded
+          http: {path: /ready, port: 8095}
+          periodSeconds: 10
+          failureThreshold: 30
+          timeoutSeconds: 5
+    livenessProbe:
+      http: {path: /health, port: 8095}
+      failureThreshold: 7
+      timeoutSeconds: 5
+    resources:
+      limits: {memory: 4g}
   # Managed local SeaweedFS. Launcher owns mini, /data, volume generations,
   # stable node identity, standard probes, resource defaults and desktop ports.
   # The bundle supplies the image; absent image means no store is generated.
@@ -362,3 +397,6 @@ webapps:
     defaultProps:
       heapSize: 512m
       memoryLimit: 1200m
+  # The microservice of the beta feature documentScanning; no database of its own.
+  - id: ocr
+    aliases: [ 'EcosOcrApp' ]

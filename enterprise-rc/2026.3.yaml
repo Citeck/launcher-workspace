@@ -120,6 +120,35 @@ qdrant:
   image:
     repository: qdrant/qdrant
     tag: v1.14.1
+# BETA features. Launcher 2.18.0+ offers each one per stand (the stand dialog, tab
+# «Экспериментальные», or `citeck features enable <id>`) and starts its apps only where
+# it is switched on; older launchers do not read the section. The apps are configured
+# in workspace-v2.yml. A feature graduates by moving its apps to the top level.
+experimental:
+  documentScanning:
+    title:
+      ru: Сканирование документов
+      en: Document scanning
+    description:
+      ru: >-
+        Распознавание сканов: двухслойный PDF (PaddleOCR или Tesseract на CPU), реквизиты и
+        карточка документа через агента Citeck AI, папка сканера. Сервису распознавания
+        нужно до 4 ГБ памяти.
+      en: >-
+        Scan recognition: a searchable PDF (PaddleOCR or Tesseract on CPU), requisites and
+        a document card via a Citeck AI agent, a scanner folder. The recognition service
+        needs up to 4 GB of memory.
+    apps:
+      # the microservice citeck-ocr: types, forms, journals, the process, the routes
+      EcosOcrApp:
+        image:
+          repository: enterprise/citeck-ocr
+          tag: 0.5.0
+      # the recognition service citeck-ocr-sidecar: PaddleOCR and Tesseract
+      ocr-sidecar:
+        image:
+          repository: harbor.citeck.ru/public/citeck-ocr-sidecar
+          tag: 0.5.0
 dependencies:
   postgres:
     image:
