@@ -103,7 +103,7 @@ EcosProjectTrackerApp:
 EcosAiApp:
   image:
     repository: enterprise/ai
-    tag: 2.1.0
+    tag: 2.2.1
 EcosRagApp:
   image:
     repository: enterprise/citeck-rag
